@@ -26,6 +26,8 @@ if (isset($_COOKIE['remember_token'])) {
     <div class="btngroup">
       <a href="enroll.php?type=student"><div class="btn btn-primary">Enroll Students</div></a>
       <a href="enroll.php?type=teacher"><div class="btn btn-primary">Enroll Teachers</div></a>
+      <a href="changepass.php?type=student"><div class="btn btn-primary">Change Student Password</div></a>
+      <a href="changepass.php?type=teacher"><div class="btn btn-primary">Change Teacher Password</div></a>
     </div>
     <a href="logout.php"><button class="btn btn-danger">Log Out</button></a>
 </body>

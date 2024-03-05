@@ -3,7 +3,7 @@ session_start();
 include '../connect.php';
 if (isset($_COOKIE['remember_token'])) {
     header('location:dashboard.php');
-  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,14 +25,12 @@ if (isset($_COOKIE['remember_token'])) {
                 <input required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="Password">Password</label>
                 <input required type="password" class="form-control" id="exampleInputPassword" name="password">
             </div>
             <button type="submit" class="btn btn-primary w-100" name="login">Log in</button>
         </form><br>
-        <span style="float:right;">Forgot Password? <a href="resetpass.php" style="color: white; font-weight: bold;">Click
-                to reset password</a></span><br><br>
         <?php
         if (isset($_POST['login'])) {
             $email = $_POST['email'];
