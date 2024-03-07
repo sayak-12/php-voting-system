@@ -10,7 +10,7 @@ session_destroy();
 ?>
 <script>
     alert("Logged out successfully");
-    location.replace("clerklogin.php");
+    location.replace("adminlogin.php");
 </script>
 <?php
 

@@ -20,7 +20,10 @@ if (isset($_GET["type"])) {
     <div>
     </div>
     <div class="container">
-        <h2>Enroll new <?php echo $type; ?></h2>
+    <h2 class="text-left"><a href="dashboard.php" title="back to dashboard"><span class="material-symbols-outlined">
+arrow_back
+</span></a> </h2>
+        <h2 class="mb-4">Enroll new <?php echo $type; ?></h2>
         <?php
         if (isset($_SESSION['error'])) {
             echo "<p class='text-danger'>" . $_SESSION['error'] . "</p>";

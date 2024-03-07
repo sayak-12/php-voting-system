@@ -1,4 +1,0 @@
-1. student type: login, review if eligible
-2. Clerk type: feeding eligible students data, feeding teacher's data
-3. Admin type: view reviews, delete reviews
-4. Teachers type: view reviews about themselves
