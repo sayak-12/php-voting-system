@@ -2,7 +2,7 @@
 session_start();
 include '../connect.php';
 if (isset($_COOKIE['remember_token'])) {
-    header('location:dashboard.php');
+    header('location:index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -46,7 +46,7 @@ if (isset($_COOKIE['remember_token'])) {
                 if ($password = $dbpass) {
                     setcookie('remember_token', $email, time() + (30 * 24 * 60 * 60), '/');
                     echo "Login Successful";
-                    header("location: dashboard.php");
+                    header("location: index.php");
                 } else {
                     echo "Wrong Password";
                 }

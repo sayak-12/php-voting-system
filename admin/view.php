@@ -4,7 +4,7 @@ session_start();
 if (isset($_GET["type"]) && ($_GET["type"] == "student" || $_GET["type"] == "teacher")) {
     $type = $_GET["type"];
 } else {
-    header("location:dashboard.php");
+    header("location:index.php");
     exit(); // Ensure script stops executing after redirection
 }
 
@@ -29,7 +29,7 @@ $result = mysqli_query($con, $query);
 
 <body>
     <?php include '../connect.php'; ?>
-        <h2 class="text-left"><a href="dashboard.php" title="Back to Dashboard"><span class="material-symbols-outlined">
+        <h2 class="text-left"><a href="index.php" title="Back to Dashboard"><span class="material-symbols-outlined">
             arrow_back
         </span></a>View <?php echo ucfirst($type); ?>s' Data</h2>
         <?php

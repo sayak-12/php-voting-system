@@ -4,7 +4,7 @@ session_start();
 if (isset($_GET["type"])) {
     $type = $_GET["type"];
 } else {
-    header("location:dashboard.php");
+    header("location:index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ if (isset($_GET["type"])) {
     <div>
     </div>
     <div class="container">
-    <h2 class="text-left"><a href="dashboard.php" title="back to dashboard"><span class="material-symbols-outlined">
+    <h2 class="text-left"><a href="index.php" title="back to dashboard"><span class="material-symbols-outlined">
 arrow_back
 </span></a> </h2>
         <h2 class="mb-4">Enroll new <?php echo $type; ?></h2>

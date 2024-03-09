@@ -4,7 +4,7 @@ session_start();
 if (isset($_GET["type"]) && ($_GET["type"] == "student" || $_GET["type"] == "teacher")) {
     $type = $_GET["type"];
 } else {
-    header("location:dashboard.php");
+    header("location:index.php");
 }
 
 if (isset($_POST["create"])) {
@@ -71,7 +71,7 @@ if (isset($_POST["create"])) {
     <div>
     </div>
     <div class="container">
-        <h2 class="text-left"><a href="dashboard.php" title="back to dashboard"><span class="material-symbols-outlined">
+        <h2 class="text-left"><a href="index.php" title="back to dashboard"><span class="material-symbols-outlined">
                     arrow_back
                 </span></a> </h2>
         <h2 class="mb-2">Enroll new <?php echo $type; ?></h2>
