@@ -10,7 +10,7 @@
     <h1 class="h1">Welcome to Teacher Remarks System!</h1>
     <div class="btngroup">
         <a href="./admin/"><button class="btn btn-outline-primary">Admin Panel</button></a>
-        <a href="./student/"><button class="btn btn-primary">Admin Panel</button></a>
+        <a href="./student/"><button class="btn btn-primary">Student Panel</button></a>
     </div>
 </body>
 </html>

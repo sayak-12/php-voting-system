@@ -46,9 +46,13 @@ $result = mysqli_query($con, $query);
             echo "<tbody>";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                foreach ($row as $value) {
+                foreach ($row as $key => $value) {
                     echo "<td>" . $value . "</td>";
                 }
+                // Adding Edit and Delete links
+                $idField = ($type == "student") ? "Enrollment" : "teacher_id";
+                echo "<td><a href='edit.php?id=" . $row[$idField] . "&type=" . $type . "'>Edit</a></td>";
+                echo "<td><a href='delete.php?id=" . $row[$idField] . "&type=" . $type . "'>Delete</a></td>";
                 echo "</tr>";
             }
             echo "</tbody></table>";
