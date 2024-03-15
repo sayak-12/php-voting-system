@@ -26,9 +26,11 @@ if (isset($_COOKIE['student_token'])) {
     <?php include "../dependancies.php"; ?>
     <title>Student Dashboard</title>
 </head>
-<body>
+<body class="d-flex justify-content-center align-items-center flex-column g-5">
     <h1>Welcome, <?php echo $_SESSION['firstname'];?></h1>
     <h3>Your attendance is <?= $db["Attendance"] ?>%</h3>
+    <h5 class="text-success">Congratulations, You're eligible for Giving Remarks!</h5>
+    <div class="d-flex" style="gap: 10px;">
     <?php
 
     if ($db["Attendance"] >= 75) {
@@ -44,7 +46,7 @@ if (isset($_COOKIE['student_token'])) {
             }
             ?>
         </select>
-        <a id="goButton" href="#" class="btn btn-primary" disabled>Go</a>
+        <a id="goButton" href="#" class="btn btn-primary" disabled>Go</a></div>
     <?php
     } else {
     ?>
@@ -53,7 +55,7 @@ if (isset($_COOKIE['student_token'])) {
     }
     ?>
     
-    <a href="logout.php"><button class="btn btn-danger">Log Out</button></a>
+    <a href="logout.php"><button class="btn btn-danger  mt-4">Log Out</button></a>
     <script>
         const changehandler = () => {
             const subjectSelect = document.getElementById('subject');

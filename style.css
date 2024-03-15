@@ -1,13 +1,23 @@
 .container{
     margin-top: 8%;
+    margin-bottom: 8%;
     width: 400px;
-    border: ridge 1.5px white;
+    border:2px solid black;
     padding: 20px;
 }
 h2, label, span{
-    color: rgba(255, 255, 255, 0.831);
+    color: rgba(0, 0, 0, 0.831);
 }
 body{
-    background: rgb(183, 158, 140);  
-
+    background-color: rgb(234, 209, 192);
+    min-height: 100vh;
+}
+.btngroup .btngroup{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.btngroup h5{
+    text-align: center;
 }
