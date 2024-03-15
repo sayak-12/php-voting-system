@@ -11,7 +11,7 @@ if (isset($_COOKIE['student_token']) && isset($_GET['subject'])) {
 
     if ($emailcount) {
         $db = mysqli_fetch_array($result);
-        $_SESSION['firstname'] = $db['Name'];
+        $_SESSION['firstname'] = $db['name'];
     }
 } else {
     header('location:login.php');
@@ -54,9 +54,9 @@ arrow_back
     ?>
         <table class="table table-striped">
             <tr>
-                <th>Teacher Name</th>
+                <th>Teacher name</th>
                 <th>Course Code</th>
-                <th>Course Name</th>
+                <th>Course name</th>
                 <th>Department</th>
                 <th>Semester</th>
                 <th>Section</th>

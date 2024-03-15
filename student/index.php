@@ -10,7 +10,7 @@ if (isset($_COOKIE['student_token'])) {
 
     if ($emailcount) {
         $db = mysqli_fetch_array($result);
-        $_SESSION['firstname'] = $db['Name'];
+        $_SESSION['firstname'] = $db['name'];
     } 
 } else {
     header('location:login.php');

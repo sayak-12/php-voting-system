@@ -19,50 +19,49 @@ if (isset($_GET["type"]) && isset($_GET["id"])) {
 <body>
     <?php include '../connect.php';
     if ($type == "student") {
-    $qr = "select * from tbl_student where Enrollment = $id";
-    $results = mysqli_query($con, $qr);
+        $qr = "select * from tbl_student where Enrollment = $id";
+        $result = mysqli_query($con, $qr);
+        $results = mysqli_fetch_array($result);
+    }
+    else if ($type == "teacher"){
+        $qr = "select * from tbl_teacher where teacher_id = $id";
+        $result = mysqli_query($con, $qr);
+        $results = mysqli_fetch_array($result);
     }
     ?>
     <div>
     </div>
     <div class="container">
-    <h2 class="text-left"><a href="index.php" title="back to dashboard"><span class="material-symbols-outlined">
-arrow_back
-</span></a> </h2>
-        <h2 class="mb-4">Enroll new <?php echo $type; ?></h2>
-        <?php
-        if (isset($_SESSION['error'])) {
-            echo "<p class='text-danger'>" . $_SESSION['error'] . "</p>";
-            unset($_SESSION['error']);
-        }
-        if (isset($_SESSION['msg'])) {
-            echo "<p class='text-success'>" . $_SESSION['msg'] . "</p>";
-            unset($_SESSION['msg']);
-        }
-        ?>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+        <h2 class="text-left"><a href="view.php?type=<?= $type ?>" title="back to dashboard"><span class="material-symbols-outlined">
+                    arrow_back
+                </span></a> </h2>
+        <h2 class="mb-4">Update <?php echo $type; ?> Information</h2>
+        <form method="post">
             <div class="form-group mt-2">
-                <label for="firstname">Full Name</label>
-                <input required type="text" class="form-control" id="exampleInputfirstname" name="firstname" value="<?php echo isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : ''; ?>">
+                <label for="firstname">Full name</label>
+                <input required type="text" class="form-control" id="exampleInputfirstname" name="firstname" value="<?= $results['name'] ?>">
             </div>
             <?php if ($type == "student") {
             ?>
-
-                <div class="form-group mt-2">
-                    <label for="enrollment">Enrollment number</label>
-                    <input required type="text" class="form-control" id="exampleInputlastname" name="enrollment" value="<?php echo isset($_POST['enrollment']) ? htmlspecialchars($_POST['enrollment']) : ''; ?>">
-                </div>
                 <div class="form-group mt-2">
                     <label for="Department">Department</label>
-                    <input required type="text" class="form-control" id="exampleInputdepartment1" aria-describedby="emailHelp" name="department" value="<?php echo isset($_POST['department']) ? htmlspecialchars($_POST['department']) : ''; ?>">
+                    <input required type="text" class="form-control" id="exampleInputdepartment1" aria-describedby="emailHelp" name="department" value="<?= $results['Department'] ?>">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="section">Section</label>
+                    <input required type="text" class="form-control" id="exampleInputsection" aria-describedby="emailHelp" name="section" value="<?= $results['Section'] ?>">
                 </div>
                 <div class="form-group mt-2">
                     <label for="phoneno">Phone Number</label>
-                    <input required type="text" class="form-control" id="exampleInputphoneno" name="phoneno" value="<?php echo isset($_POST['phoneno']) ? htmlspecialchars($_POST['phoneno']) : ''; ?>">
+                    <input required type="text" class="form-control" id="exampleInputphoneno" name="phoneno" value="<?= $results['Phone'] ?>">
                 </div>
                 <div class="form-group mt-2">
                     <label for="attendance">Attendance</label>
-                    <input required type="text" class="form-control" id="exampleInputattendance" name="attendance" value="<?php echo isset($_POST['attendance']) ? htmlspecialchars($_POST['attendance']) : ''; ?>">
+                    <input required type="text" class="form-control" id="exampleInputattendance" name="attendance" value="<?= $results['Attendance'] ?>">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="semester">Semester</label>
+                    <input required type="text" class="form-control" id="exampleInputsemester" name="semester" value="<?= $results['semester'] ?>">
                 </div>
             <?php
             } ?>
@@ -71,29 +70,11 @@ arrow_back
 
                 <div class="form-group mt-2">
                     <label for="email">Email: </label>
-                    <input required type="email" class="form-control" id="exampleInputlastname" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+                    <input required type="email" class="form-control" id="exampleInputlastname" name="email" value="<?= $results['email'] ?>">
                 </div>
             <?php
             } ?>
-            <div class="form-group mt-2">
-                <label for="password">Password</label>
-                <input required type="password" class="form-control" id="exampleInputPassword" name="password">
-            </div>
-            <div class="form-group mt-2">
-                <label for="cPassword">Confirm Password</label>
-                <input required type="password" class="form-control" id="cexampleInputPassword" name="cpassword">
-            </div>
-            <button type="submit" class="btn btn-primary w-100 my-3" name="create">Enroll <?php echo $type; ?></button>
-            <?php if ($type=="student") {
-                ?>
-                <p>Enroll teachers here: <a href="enroll.php?type=teacher">New Teachers</a></p>
-                <?php
-            } ?>
-            <?php if ($type=="teacher") {
-                ?>
-                <p>Enroll students here: <a href="enroll.php?type=student">New Students</a></p>
-                <?php
-            } ?>
+            <button type="submit" class="btn btn-primary w-100 my-3" name="create">Update <?php echo $type; ?></button>
         </form>
     </div>
     <?php
@@ -101,59 +82,36 @@ arrow_back
     if (isset($_POST['create'])) {
         if ($type == "student") {
             $firstname = $_POST['firstname'];
-            $enrollment = $_POST['enrollment'];
             $department = $_POST['department'];
             $attendance = $_POST['attendance'];
             $phone = $_POST['phoneno'];
-            $password = $_POST['password'];
-            $confirm = $_POST['cpassword'];
-    
-            $check = "SELECT * FROM `tbl_student` WHERE Enrollment = '$enrollment'";
-            $qr = mysqli_query($con, $check);
-            $rows = mysqli_num_rows($qr);
-            $hashed_pass = password_hash($password, PASSWORD_BCRYPT);
-            $token = bin2hex(random_bytes(15));
-    
-            if (!($rows > 0)) {
-                if (($password === $confirm)) {
-                    $qr2 = "INSERT INTO `tbl_student`(`Enrollment`, `Name`, `Phone`, `Department`, `Password`, `Attendance`) VALUES ('$enrollment','$firstname','$phone','$department','$hashed_pass','$attendance')";
-                    $iquery = mysqli_query($con, $qr2);
-                    $_SESSION['msg'] = "Registration successful...";
-                } else {
-                    $_SESSION['error'] = "Passwords do not match";
-                }
-            } else {
-                $_SESSION['error'] = "Enrollment Number already exists";
-            }
-            header("location: enroll.php?type=$type");
-            exit(); 
-        }
-    else if($type=="teacher"){
-        $firstname = $_POST['firstname'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $confirm = $_POST['cpassword'];
+            $section = $_POST['section'];
+            $semester = $_POST['semester'];
 
-        $check = "SELECT * FROM `tbl_teacher` WHERE email = '$email'";
-        $qr = mysqli_query($con, $check);
-        $rows = mysqli_num_rows($qr);
-        $hashed_pass = password_hash($password, PASSWORD_BCRYPT);
-        $token = bin2hex(random_bytes(15));
-
-        if (!($rows > 0)) {
-            if (($password === $confirm)) {
-                $qr2 = "INSERT INTO `tbl_teacher`(`name`, `email`, `password`, `rating_one`, `rating_two`, `rating_three`, `rating_four`) VALUES ('$firstname','$email','$hashed_pass','0','0','0','0')";
-                $iquery = mysqli_query($con, $qr2);
-                $_SESSION['msg'] = "Registration successful...";
-            } else {
-                $_SESSION['error'] = "Passwords do not match";
+            $qr2 = "UPDATE `tbl_student` SET `name`='$firstname',`Phone`='$phone',`Department`='$department',`Attendance`='$attendance', `Section`='$section', `semester`='$semester' WHERE Enrollment = $id";
+            $iquery = mysqli_query($con, $qr2);
+            if ($iquery) {
+                echo "<script>alert('Updation Successful...')</script>";
+            echo "<script>window.location.href = 'edit.php?type=$type&id=$id';</script>";
             }
-        } else {
-            $_SESSION['error'] = "Enrollment Number already exists";
+            else{
+                echo "<script>alert('Some Error Occurred')</script>";
+            }
+        } else if ($type == "teacher") {
+            $firstname = $_POST['firstname'];
+            $email = $_POST['email'];
+
+
+            $qr2 = "UPDATE `tbl_teacher` SET `name`='$firstname',`email`='$email' WHERE teacher_id = $id";
+            $iquery = mysqli_query($con, $qr2);
+            if ($iquery) {
+                echo "<script>alert('Updation Successful...')</script>";
+            echo "<script>window.location.href = 'edit.php?type=$type&id=$id';</script>";
+            }
+            else{
+                echo "<script>alert('Some Error Occurred')</script>";
+            }
         }
-        header("location: enroll.php?type=$type");
-        exit(); 
-    }
     }
 
     ?>

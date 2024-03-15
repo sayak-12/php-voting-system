@@ -18,7 +18,7 @@ if (isset($_POST["create"])) {
             if ($handle !== FALSE) {
                 if ($type == "student") {
                     fgetcsv($handle);
-                $sql = "INSERT INTO `tbl_student` (`Enrollment`, `Name`, `Phone`, `Department`, `Password`, `Attendance`) VALUES ";
+                $sql = "INSERT INTO `tbl_student` (`Enrollment`, `name`, `Phone`, `Department`, `Password`, `Attendance`) VALUES ";
                 while (($data = fgetcsv($handle)) !== FALSE) {
                     $sql .= "('" . implode("', '", array_map('addslashes', $data)) . "'),";
                 }
