@@ -1,19 +1,12 @@
 <?php
 session_start();
 
-if (isset($_GET["type"]) && ($_GET["type"] == "student" || $_GET["type"] == "teacher")) {
-    $type = $_GET["type"];
-} else {
-    header("location:index.php");
-    exit(); // Ensure script stops executing after redirection
-}
-
 // Include dependencies and establish database connection
 include '../dependancies.php';
 include '../connect.php';
 
 // Query to retrieve data based on $type
-$table = ($type == "student") ? "tbl_student" : "tbl_teacher";
+$table = "tbl_subject";
 $query = "SELECT * FROM $table";
 $result = mysqli_query($con, $query);
 
@@ -24,14 +17,14 @@ $result = mysqli_query($con, $query);
 
 <head>
     <?php include '../dependancies.php' ?>
-    <title>View <?php echo ucfirst($type); ?>s' Data</title>
+    <title>View Subject Info</title>
 </head>
 
 <body style="position: relative;">
     <?php include '../connect.php'; ?>
         <h2 class="text-left"><a href="index.php" title="Back to Dashboard"><span class="material-symbols-outlined">
             arrow_back
-        </span></a>View <?php echo ucfirst($type); ?>s' Data</h2>
+        </span></a>View Subject Info</h2>
         <?php
         if (mysqli_num_rows($result) > 0) {
             echo "<table class='table table-striped w-100'>";
@@ -50,9 +43,9 @@ $result = mysqli_query($con, $query);
                     echo "<td>" . $value . "</td>";
                 }
                 // Adding Edit and Delete links
-                $idField = ($type == "student") ? "Enrollment" : "teacher_id";
-                echo "<td><a href='edit.php?id=" . $row[$idField] . "&type=" . $type . "'>Edit</a></td>";
-                echo "<td><a href='delete.php?id=" . $row[$idField] . "&type=" . $type . "'>Delete</a></td>";
+                $idField = "course_code";
+                echo "<td><a href='editsubject.php?id=" . $row[$idField] . "'>Edit</a></td>";
+                echo "<td><a href='deletesubject.php?id=" . $row[$idField] . "'>Delete</a></td>";
                 echo "</tr>";
             }
             echo "</tbody></table>";

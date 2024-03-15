@@ -30,6 +30,11 @@ if (isset($_COOKIE['remember_token'])) {
       <a href="import.php?type=teacher"><div class="btn btn-primary">import Teachers' Data</div></a>
       <a href="view.php?type=student"><div class="btn btn-primary">View Students' Data</div></a>
       <a href="view.php?type=teacher"><div class="btn btn-primary">View Teachers' Data</div></a>
+      <a href="addsubject.php"><div class="btn btn-primary">Add new Subject</div></a>
+      <a href="viewsubject.php"><div class="btn btn-primary">View ongoing Subjects</div></a>
+      <a href="assign.php"><div class="btn btn-primary">Assign Subjects</div></a>
+      <a href="assignview.php"><div class="btn btn-primary">View Assigned Subjects</div></a>
+      <a href="viewratings.php"><div class="btn btn-primary">View Ratings</div></a>
     </div>
     <a href="logout.php"><button class="btn btn-danger">Log Out</button></a>
 </body>

@@ -7,11 +7,14 @@ if (isset($_COOKIE['student_token'])) {
     $loginquery = "SELECT * FROM `tbl_student` WHERE Enrollment='$email'";
     $result = mysqli_query($con, $loginquery);
     $emailcount = mysqli_num_rows($result);
-
     if ($emailcount) {
         $db = mysqli_fetch_array($result);
         $_SESSION['firstname'] = $db['name'];
     } 
+    else {
+        setcookie('student_token', '', time() - 3600, '/');
+        header('location:login.php');
+    }
 } else {
     header('location:login.php');
 }
