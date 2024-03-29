@@ -36,7 +36,8 @@ if (isset($_COOKIE['student_token'])) {
     if ($db["Attendance"] >= 75) {
         $department = $db['Department'];
         $section = $db['Section'];
-        $subject_query = "SELECT course_code FROM tbl_teacher_assignment WHERE department = '$department' AND section = '$section'";
+        $semester = $db['semester'];
+        $subject_query = "SELECT course_code FROM tbl_teacher_assignment WHERE department = '$department' AND section = '$section' AND semester = '$semester'";
         $subject_result = mysqli_query($con, $subject_query);
     ?>
         <select name="subject" id="subject">

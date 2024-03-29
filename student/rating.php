@@ -49,7 +49,7 @@ arrow_back
         $department = $db['Department'];
         $section = $db['Section'];
         $semester = $db['semester'];
-        $subject_query = "SELECT assigned_to, department, semester, section FROM tbl_teacher_assignment WHERE department = '$department' AND section = '$section' AND course_code = '$subject'";
+        $subject_query = "SELECT assigned_to, department, semester, section FROM tbl_teacher_assignment WHERE department = '$department' AND section = '$section' AND semester='$semester' AND course_code = '$subject'";
         $subject_result = mysqli_query($con, $subject_query);
     ?>
         <table class="table table-striped">
