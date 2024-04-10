@@ -45,7 +45,13 @@ if (isset($_GET["type"]) && isset($_GET["id"])) {
             ?>
                 <div class="form-group mt-2">
                     <label for="Department">Department</label>
-                    <input required type="text" class="form-control" id="exampleInputdepartment1" aria-describedby="emailHelp" name="department" value="<?= $results['Department'] ?>">
+                    <select class="form-control" name="department">
+                        <option value="CSE" <?php if($results['Department'] == 'CSE') echo 'selected'; ?>>CSE</option>
+                        <option value="CSE IOT" <?php if($results['Department'] == 'CSE IOT') echo 'selected'; ?>>CSE IoT</option>
+                        <option value="CSIT" <?php if($results['Department'] == 'CSIT') echo 'selected'; ?>>CSIT</option>
+                        <option value="CSE AIML" <?php if($results['Department'] == 'CSE AIML') echo 'selected'; ?>>CSE AI/ML</option>
+                        <option value="MECHANICAL" <?php if($results['Department'] == 'MECHANICAL') echo 'selected'; ?>>Mechanical</option>
+                    </select>
                 </div>
                 <div class="form-group mt-2">
                     <label for="section">Section</label>

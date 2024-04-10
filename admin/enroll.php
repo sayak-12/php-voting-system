@@ -39,7 +39,13 @@ if (isset($_GET["type"])) {
                 </div>
                 <div class="form-group mt-2">
                     <label for="Department">Department</label>
-                    <input required type="text" class="form-control" id="exampleInputdepartment1" aria-describedby="emailHelp" name="department" value="<?php echo isset($_POST['department']) ? htmlspecialchars($_POST['department']) : ''; ?>">
+                    <select class="form-control" name="department">
+                        <option value="CSE">CSE</option>
+                        <option value="CSE IOT">CSE IoT</option>
+                        <option value="CSIT">CSIT</option>
+                        <option value="CSE AIML">CSE AI/ML</option>
+                        <option value="MECHANICAL">Mechanical</option>
+                    </select>
                 </div>
                 <div class="form-group mt-2">
                     <label for="phoneno">Phone Number</label>
