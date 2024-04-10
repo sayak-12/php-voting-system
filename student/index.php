@@ -42,8 +42,8 @@ if (isset($_COOKIE['student_token'])) {
             $subject_result = mysqli_query($con, $subject_query);
         ?>
         <div class="d-flex" style="gap: 10px;">
-        <h5 class="text-success">Congratulations, You're eligible for Giving Remarks!</h5>
-            <select name="subject" id="subject">
+        <h5 class="text-success mb-0 d-flex align-items-center">Congratulations, You're eligible for Giving Remarks!</h5>
+            <select name="subject" id="subject" class="form-control" style="width: max-content;">
                 <?php
                 while ($subject_row = mysqli_fetch_array($subject_result)) {
                     echo "<option value='" . $subject_row['course_code'] . "'>" . $subject_row['course_code'] . "</option>";

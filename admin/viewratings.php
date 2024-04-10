@@ -18,16 +18,21 @@ $result = mysqli_query($con, $query);
 <head>
     <?php include '../dependancies.php' ?>
     <title>View Ratings</title>
+    <style>
+        tr{
+            text-align: center;
+        }
+    </style>
 </head>
 
-<body style="position: relative;">
+<body style="position: relative; padding: 20px;">
     <?php include '../connect.php'; ?>
-        <h2 class="text-left"><a href="index.php" title="Back to Dashboard"><span class="material-symbols-outlined">
+        <h2 class="text-left mb-3"><a href="index.php" title="Back to Dashboard"><span class="material-symbols-outlined">
             arrow_back
-        </span></a>View Ratings</h2>
+        </span></a>&nbsp;&nbsp;View Ratings</h2>
         <?php
         if ($result) {
-            echo "<table class='table table-striped w-100'>";
+            echo "<table class='table table-striped w-100' style='border:1px solid black;'>";
             // Output table headers
             echo "<thead><tr>";
             echo "<th>Review For</th>"; // Teacher Name

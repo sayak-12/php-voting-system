@@ -35,14 +35,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <?php include "../dependancies.php"; ?>
     <title>Rate <?= $subject ?> Teachers</title>
+    <style>
+        tr{
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 
-<body>
-    <a href="index.php"><h3 class="text-left" title="Back to dashboard"><span class="material-symbols-outlined">
-arrow_back
-</span></h3></a>
-    <h1>Welcome, <?php echo $_SESSION['firstname']; ?></h1>
-    <h3>Your attendance is <?= $db["Attendance"] ?>%</h3>
+<body style="position: relative; padding: 20px;">
+<h2 class="text-left mb-3"><a href="index.php" title="Back to Dashboard"><span class="material-symbols-outlined">
+            arrow_back
+        </span></a>&nbsp;&nbsp;Rate your Professor <a href="logout.php" style="float:right;"><button class="btn btn-danger">Log Out</button></a></h2>
     <?php
 
     if ($db["Attendance"] >= 75) {
@@ -84,7 +88,7 @@ arrow_back
                         <td><?=$semester?></td>
                         <td><?=$section?></td>
                         <td>
-                            <select name="rating" id="">
+                            <select name="rating" id="" class="form-control">
                                 <option value="">select value</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -121,7 +125,7 @@ arrow_back
     }
     ?>
 
-    <a href="logout.php"><button class="btn btn-danger">Log Out</button></a>
+    
 
 </body>
 

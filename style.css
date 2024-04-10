@@ -1,3 +1,6 @@
+*{
+    font-family: sans-serif;
+}
 .container{
     margin-top: 8%;
     margin-bottom: 8%;
@@ -5,17 +8,53 @@
     border:2px solid black;
     padding: 20px;
 }
+.container.home{
+    width: 100%;
+    border: none;
+    padding: unset;
+    margin: auto 0;
+}
+.btncard{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.305);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+    
+}
+.btngroup a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.btncard span{
+    text-align: center;
+}
+.container.home p{
+    text-align: justify;
+}
 h2, label, span{
     color: rgba(0, 0, 0, 0.831);
 }
+th{
+   text-align: center;
+}
 body{
-    background-color: rgb(234, 209, 192);
     min-height: 100vh;
+    position: relative;
+}
+.index{
+    height: 100%;
 }
 .btngroup .btngroup{
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 .btngroup h5{

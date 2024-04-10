@@ -27,19 +27,20 @@ $result = mysqli_query($con, $query);
     <title>View <?php echo ucfirst($type); ?>s' Data</title>
 </head>
 
-<body style="position: relative;">
+<body style="position: relative; padding: 20px;">
     <?php include '../connect.php'; ?>
-        <h2 class="text-left"><a href="index.php" title="Back to Dashboard"><span class="material-symbols-outlined">
+        <h2 class="text-left mb-3"><a href="index.php" title="Back to Dashboard"><span class="material-symbols-outlined">
             arrow_back
-        </span></a>View <?php echo ucfirst($type); ?>s' Data</h2>
+        </span></a>&nbsp;&nbsp;View <?php echo ucfirst($type); ?>s' Data</h2>
         <?php
         if (mysqli_num_rows($result) > 0) {
-            echo "<table class='table table-striped w-100'>";
+            echo "<table class='table table-striped w-100' style='border:1px solid black;'>";
             // Output table headers
             echo "<thead><tr>";
             while ($field = mysqli_fetch_field($result)) {
                 echo "<th>" . ucfirst($field->name) . "</th>";
             }
+            echo "<th colspan='2'>Actions</th>";
             echo "</tr></thead>";
 
             // Output table rows
@@ -51,8 +52,12 @@ $result = mysqli_query($con, $query);
                 }
                 // Adding Edit and Delete links
                 $idField = ($type == "student") ? "Enrollment" : "teacher_id";
-                echo "<td><a href='edit.php?id=" . $row[$idField] . "&type=" . $type . "'>Edit</a></td>";
-                echo "<td><a href='delete.php?id=" . $row[$idField] . "&type=" . $type . "'>Delete</a></td>";
+                echo "<td><a href='edit.php?id=" . $row[$idField] . "&type=" . $type . "'><span class='material-symbols-outlined text-danger'>
+                edit
+                </span></a></td>";
+                echo "<td><a href='delete.php?id=" . $row[$idField] . "&type=" . $type . "'><span class='material-symbols-outlined text-danger'>
+                delete
+                </span></a></td>";
                 echo "</tr>";
             }
             echo "</tbody></table>";

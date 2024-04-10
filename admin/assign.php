@@ -29,7 +29,7 @@ session_start();
             </div>
             <div class="form-group mt-2">
                 <label for="semester">Semester</label>
-                <select name="semester" id="semester" class="w-100">
+                <select name="semester" id="semester" class="w-100 form-control">
                     <option value="">Select a Semester</option>
                     <?php
                     for ($i = 1; $i <= 10; $i++) {
@@ -41,7 +41,7 @@ session_start();
 
             <div class="form-group mt-2">
                 <label for="code">Course Details</label>
-                <select name="code" id="" class="w-100">
+                <select name="code" id="" class="w-100  form-control">
                     <option value="">Select a course code</option>
                     <?php
                     $query = "SELECT course_code, course_name FROM tbl_subject";
@@ -55,7 +55,7 @@ session_start();
             </div>
             <div class="form-group mt-2">
                 <label for="teacher">Assign faculty</label>
-                <select name="teacher" id="" class="w-100">
+                <select name="teacher" id="" class="w-100  form-control">
                     <option value="">Select a teacher</option>
                     <?php
                     $query = "SELECT teacher_id, name FROM tbl_teacher";
